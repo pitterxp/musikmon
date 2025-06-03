@@ -20,3 +20,8 @@ desktop.ini
 *.exe
 *.apk
 *.zip
+
+.godot/
+.editorconfig
+.gitattributes
+
