@@ -1,0 +1,22 @@
+# Godot-specific
+.import/
+.export/
+*.import
+*.godot/   # falls du eigene Cache-Struktur nutzt
+*.mono/    # falls C# in Verwendung (nicht nötig bei dir)
+
+# System-specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# User-specific
+*.cfg
+*.log
+*.tmp
+
+# Godot project export templates (optional)
+*.pck
+*.exe
+*.apk
+*.zip
