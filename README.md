@@ -33,16 +33,7 @@ Ein lauffähiger Prototyp mit:
 
 ## 🐝 Maskottchen
 
-**Trötebiene** – summt nervig, trötet schlimmer.  
-Das erste offizielle MusikMon.  
-![Trötebiene](res://img/troetebiene-256.png)
-
----
-
-## 🤝 Contributing
-
-Aktuell in privater Entwicklung.  
-Meld dich bei Interesse über [Captain Pitter](https://github.com/pitterxp) – oder tröte einfach in den Wind 🎺
+[WIP]
 
 ---
 
