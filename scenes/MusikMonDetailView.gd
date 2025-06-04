@@ -46,7 +46,7 @@ func _load_mon(mon_id:int) -> void:
     if query_result and query_result.size() > 0:
         var row : Dictionary = query_result[0]
         name_label.text = row.get("name", "")
-        typ_label.text = row.get("typ1_name", "") + (row.get("typ2_name", "") != "" ? "/" + row.get("typ2_name") : "")
+        typ_label.text = row.get("typ1_name", "") + ("/" + row.get("typ2_name") if row.get("typ2_name", "") != "" else "")
         rollen_label.text = row.get("rollenname", "")
         beschreibung_label.text = row.get("rollenbeschreibung", "")
         var tex_path : String = row.get("img_256", "")
