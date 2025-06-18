@@ -8,7 +8,7 @@ var table_created: bool = true
 
 func _ready() -> void:
 	db = SQLite.new()
-	db.path = "res://data.db"
+	db.path = "res://scenes/db_test/data.db"
 	db.open_db()
 	pass
 

@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpsa72oom1oop"]
+
+[ext_resource type="Script" uid="uid://c6k2sru2p6tw2" path="res://scenes/game/world/overworld/POI/POI2/poi2.gd" id="1_w3x2u"]
+
+[node name="Innenraum" type="CanvasLayer"]
+script = ExtResource("1_w3x2u")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.843137, 0, 1)
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "POI-V: 🏠 Tutorial-Haus #⚄"
+horizontal_alignment = 1
+
+[node name="ExitButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -31.0
+offset_top = -31.0
+offset_right = 31.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Zurück"
+
+[connection signal="pressed" from="Control/ExitButton" to="." method="_on_exit_button_pressed"]

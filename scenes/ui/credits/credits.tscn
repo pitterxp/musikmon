@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvmjupwu7s3vo"]
+
+[ext_resource type="Script" uid="uid://dy0663u5vp3dn" path="res://scenes/ui/credits/credits.gd" id="1_8bbg5"]
+
+[node name="Intro" type="CanvasLayer"]
+script = ExtResource("1_8bbg5")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="Page" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="VBoxContainer" parent="Page"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Page/Header"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 66
+text = "❤️‍🔥 MusikMon 🪗"
+horizontal_alignment = 1
+
+[node name="Content" type="VBoxContainer" parent="Page"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="Page/Content"]
+layout_mode = 2
+text = "GFX
+
+Tileset + Items by CodeSpree | https://codespree.itch.io/"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Page/Content"]
+layout_mode = 2
+text = "SFX
+
+Sound Effect \"open door\" by freesound_community from Pixabay | https://pixabay.com/users/freesound_community-46691455
+"
+horizontal_alignment = 1
+
+[node name="Footer" type="VBoxContainer" parent="Page"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Mainmenu" type="Button" parent="Page/Footer"]
+layout_mode = 2
+text = "📇 Hauptmenü"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Page/Footer/Mainmenu" to="." method="_on_mainmenu_pressed"]

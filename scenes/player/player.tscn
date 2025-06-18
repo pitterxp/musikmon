@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://w4yy57spmjiv"]
+
+[ext_resource type="Texture2D" uid="uid://drxs1sh5duuwr" path="res://scenes/player/assets/player-old-64.png" id="1_8afob"]
+[ext_resource type="Script" uid="uid://b78to8yu42yk5" path="res://scenes/player/player.gd" id="1_dovo2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dovo2"]
+size = Vector2(51, 59)
+
+[node name="Spieler" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_dovo2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8afob")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_dovo2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.25, 1.25)
+
+[node name="InteractionLabel" type="Label" parent="."]
+visible = false
+offset_left = -71.0
+offset_top = -53.0
+offset_right = 84.0
+offset_bottom = -30.0
+theme_override_colors/font_color = Color(0.580392, 0, 0.827451, 1)
+text = "🏃‍➡️\"Accept\" to enter"

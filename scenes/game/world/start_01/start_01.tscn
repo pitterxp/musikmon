@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dd8bhr7n0kf8g"]
+
+[ext_resource type="Texture2D" uid="uid://db0ytbirenjb3" path="res://scenes/game/world/start_01/sprites/isola-piana.jpg" id="1_o7iw3"]
+[ext_resource type="Texture2D" uid="uid://j433xmry1b3l" path="res://scenes/game/world/start_01/sprites/pc-old_one.png" id="2_yu1le"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yu1le"]
+size = Vector2(37, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqq1p"]
+size = Vector2(58, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bf3fq"]
+size = Vector2(51, 59)
+
+[node name="IsolaPiana-01" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(275, -372)
+texture = ExtResource("1_o7iw3")
+
+[node name="POI_Leuchtturm" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="POI_Leuchtturm"]
+position = Vector2(54, -766)
+shape = SubResource("RectangleShape2D_yu1le")
+
+[node name="POI_Stand" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="POI_Stand"]
+position = Vector2(-210, -37)
+shape = SubResource("RectangleShape2D_dqq1p")
+
+[node name="PlayerSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(659, 47)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(657, 41)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_yu1le")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_bf3fq")

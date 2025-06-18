@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cafjw5vrjva3f"]
+
+[node name="Hud" type="CanvasLayer"]
+
+[node name="Page" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="HBoxContainer" parent="Page"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="ButtonSet" type="VBoxContainer" parent="Page/Left"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="Page/Left/ButtonSet"]
+layout_mode = 2
+text = "🔲 Btn 1"
+
+[node name="Button2" type="Button" parent="Page/Left/ButtonSet"]
+layout_mode = 2
+text = "🔲 Btn 1"
+
+[node name="Button3" type="Button" parent="Page/Left/ButtonSet"]
+layout_mode = 2
+text = "🔲 Btn 1"
+
+[node name="Button4" type="Button" parent="Page/Left/ButtonSet"]
+layout_mode = 2
+text = "🔲 Btn 1"
+
+[node name="Center" type="HBoxContainer" parent="Page"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Right" type="HBoxContainer" parent="Page"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2

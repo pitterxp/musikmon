@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdg4cudg8chn7"]
+
+[ext_resource type="Script" uid="uid://eb4chesqnrq2" path="res://globals/fade_manager.gd" id="1_b8s4q"]
+
+[node name="FadeManager" type="CanvasLayer"]
+script = ExtResource("1_b8s4q")
+
+[node name="FadeRect" type="ColorRect" parent="."]
+z_index = 4096
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
