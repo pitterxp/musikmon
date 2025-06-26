@@ -34,7 +34,7 @@ theme_override_font_sizes/font_size = 50
 text = "POI-V: 🏠 Tutorial-Haus #⚄"
 horizontal_alignment = 1
 
-[node name="ExitButton" type="Button" parent="Control"]
+[node name="ExitButton" type="Button" parent="Control" groups=["main_ui_button"]]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

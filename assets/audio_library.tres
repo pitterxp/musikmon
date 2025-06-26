@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="AudioLibrary" load_steps=3 format=3 uid="uid://drniq3q6s8hxv"]
+[gd_resource type="Resource" script_class="AudioLibrary" load_steps=4 format=3 uid="uid://drniq3q6s8hxv"]
 
 [ext_resource type="Script" uid="uid://ijtxeqif16cc" path="res://globals/audio_library.gd" id="1_drn0u"]
 [ext_resource type="AudioStream" uid="uid://dcv2m1tv8r2u" path="res://assets/sfx/door-open-close-45475.mp3" id="2_uclk1"]
+[ext_resource type="AudioStream" uid="uid://c0d2r4bld8xx" path="res://assets/sfx/mouse-click2.mp3" id="3_n7fxr"]
 
 [resource]
 script = ExtResource("1_drn0u")
 refresh_on_ready = false
 music = {}
 sfx = {
-"door-open-close-45475": ExtResource("2_uclk1")
+"door-open-close-45475": ExtResource("2_uclk1"),
+"mouse-click2": ExtResource("3_n7fxr")
 }
 metadata/_custom_type_script = "uid://ijtxeqif16cc"

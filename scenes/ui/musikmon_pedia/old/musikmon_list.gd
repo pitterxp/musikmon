@@ -6,7 +6,7 @@ extends Node
 signal mon_selected(mon_id: int)
 var db : SQLite
 @onready var mon_list : ItemList = $mon_list
-@onready var mon_inventory : ItemList = $inventory
+@onready var mon_inventory : ItemList = $InventoryContainer/inventory
 
 var mon_list_tooltip : String = "🔎 LMB\n➕ RMB"
 var mon_inventory_tooltip : String = "🔎 LMB\n➖ RMB"
@@ -16,8 +16,10 @@ var mon_inventory_count : int = 0
 var mon_inventory_count_max : int = 3
 
 func _ready() -> void:
+	UiController.setup_ui_buttons_in_scene()
+	
 	db = SQLite.new()
-	db.path = "res://database/musimon.db"
+	db.path = "res://database/musikmon.db"
 	db.open_db()
 	
 	# Listening to Detail View: add musikmon to inventory
@@ -66,8 +68,10 @@ func _handle_inventory(index: int, mode = "add") -> void:
 			# Identische Musikmon?
 			#TODO mon_inventory_list raus, mon_inventory rein
 			if not mon_inventory_list.has(mon_id):
-				#mon_inventory_list[mon_id] = {"name": mon_name, "id": mon_id}
-				#mon_inventory.text += mon_name + "\n"
+				# Inventory für RuntimeData speichern
+				mon_inventory_list[mon_id] = {"name": mon_name, "id": mon_id}
+				save_inventory_runtimedata()
+				
 				mon_inventory.add_item(mon_name, mon_icon)
 				var metadata_dict = {
 					"id": mon_id,
@@ -92,9 +96,19 @@ func _handle_inventory(index: int, mode = "add") -> void:
 		#var mon_inv_id = mon_inv["id"]
 		#var mon_inv_name = mon_inv["name"]
 		#print("removing mon '"+mon_inv_name+"' (",mon_inv_id,") from inv!")
+		
+		# Inventory für RuntimeData editieren
+		mon_inventory_list.erase(index)
+		save_inventory_runtimedata()
+		
 		mon_inventory.remove_item(index)
 		mon_inventory_count -= 1
-		pass
+
+func save_inventory_runtimedata() -> void:
+	print("💾 Speichere MusikMon Inventar (RT-Data)")
+	RuntimeParameter.player_inventory_musikmon = mon_inventory_list
+	print("Lade MusikMon Inventar (RT-Data)")
+	print(RuntimeParameter.player_inventory_musikmon)
 
 func _on_mon_list_item_clicked(index: int, _at_position: Vector2, mouse_button_index: int) -> void:
 	var mon = mon_list.get_item_metadata(index)

@@ -1,7 +1,7 @@
 extends Node
 
 func _ready() -> void:
-	pass
+	UiController.setup_ui_buttons_in_scene()
 
 func _process(_delta: float) -> void:
 	pass

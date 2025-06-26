@@ -11,7 +11,7 @@ const SFX_BUS_NAME = "sfx"
 var bgm_autoplay: bool = true
 var bgm_loop: bool = false
 
-var default_ui_click_sound := ""
+var default_ui_click_sound := "mouse-click2"
 var default_bgm := ""
 
 func _ready() -> void:

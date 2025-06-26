@@ -1,0 +1,89 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn2yjbx28k80d"]
+
+[ext_resource type="Script" uid="uid://dyegipgmtub3v" path="res://scenes/ui/player_profile/player_profile.gd" id="1_0ko6k"]
+
+[node name="PlayerProfile" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ko6k")
+
+[node name="Header" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 49.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Header"]
+layout_mode = 2
+text = "❤️‍🔥 MusikMon 🪗
+🪪 Spieler Profile 🪪"
+horizontal_alignment = 1
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 100.0
+offset_bottom = 131.0
+grow_horizontal = 2
+theme_override_constants/separation = 10
+
+[node name="NewProfile" type="HBoxContainer" parent="Content"]
+layout_mode = 2
+alignment = 1
+
+[node name="newProfile" type="LineEdit" parent="Content/NewProfile"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+placeholder_text = "Nickname für neues Profil..."
+
+[node name="addProfile" type="Button" parent="Content/NewProfile"]
+layout_mode = 2
+tooltip_text = "Profil mit diesem Nicknamen anlegen"
+text = "💾"
+
+[node name="ProfileList" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="Inventories" type="HBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="MonInventory" type="VBoxContainer" parent="Content/Inventories"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemInventory" type="VBoxContainer" parent="Content/Inventories"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Footer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ButtonSet" type="VBoxContainer" parent="Footer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Mainmenu" type="Button" parent="Footer/ButtonSet" groups=["main_ui_button"]]
+layout_mode = 2
+text = "📇 Hauptmenü"
+
+[node name="Monpedia" type="Button" parent="Footer/ButtonSet" groups=["main_ui_button"]]
+layout_mode = 2
+text = "📒 MusikMon-Pedia"
+
+[connection signal="text_submitted" from="Content/NewProfile/newProfile" to="." method="_on_new_profile_text_submitted"]
+[connection signal="pressed" from="Content/NewProfile/addProfile" to="." method="_on_add_profile_pressed"]
+[connection signal="pressed" from="Footer/ButtonSet/Mainmenu" to="." method="_on_mainmenu_pressed"]
+[connection signal="pressed" from="Footer/ButtonSet/Monpedia" to="." method="_on_monpedia_pressed"]

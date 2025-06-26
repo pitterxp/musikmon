@@ -47,11 +47,11 @@ grow_vertical = 0
 layout_mode = 2
 alignment = 1
 
-[node name="Mainmenu" type="Button" parent="Page/Footer/ButtonSet"]
+[node name="Mainmenu" type="Button" parent="Page/Footer/ButtonSet" groups=["main_ui_button"]]
 layout_mode = 2
 text = "📇 Hauptmenü"
 
-[node name="Play" type="Button" parent="Page/Footer/ButtonSet"]
+[node name="Play" type="Button" parent="Page/Footer/ButtonSet" groups=["main_ui_button"]]
 layout_mode = 2
 text = "♾️ Spielen"
 

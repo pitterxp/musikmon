@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxo15mjfg0qwu"]
+
+[ext_resource type="Script" uid="uid://bh4fx558ld2dw" path="res://scenes/ui/templates/ui_player_profil_tag/ui_player_profil_tag.gd" id="1_5po6s"]
+
+[node name="profileNickname" type="Button"]
+z_index = -99
+y_sort_enabled = true
+offset_right = 58.0
+offset_bottom = 31.0
+text = "Profil: "
+flat = true
+script = ExtResource("1_5po6s")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

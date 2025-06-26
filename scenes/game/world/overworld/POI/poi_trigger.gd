@@ -5,13 +5,13 @@ extends Area2D
 var player_in_range: bool = false
 
 func _on_body_entered(body: Node) -> void:
-	print("body entered")
+	#print("body entered")
 	if body.name == "Spieler":
 		player_in_range = true
 		body.get_node("InteractionLabel").visible = true
 
 func _on_body_exited(body: Node) -> void:
-	print("body exited")
+	#print("body exited")
 	if body.name == "Spieler":
 		player_in_range = false
 		body.get_node("InteractionLabel").visible = false

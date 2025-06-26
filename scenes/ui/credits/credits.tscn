@@ -63,7 +63,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Mainmenu" type="Button" parent="Page/Footer"]
+[node name="Mainmenu" type="Button" parent="Page/Footer" groups=["main_ui_button"]]
 layout_mode = 2
 text = "📇 Hauptmenü"
 

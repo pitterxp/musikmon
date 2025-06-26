@@ -1,0 +1,157 @@
+[gd_scene load_steps=3 format=3 uid="uid://7rkxj47qjwrl"]
+
+[ext_resource type="Script" uid="uid://c6o2ylkyslqux" path="res://scenes/ui/musikmon_pedia/musikmon_pedia.gd" id="1_jeksy"]
+[ext_resource type="Texture2D" uid="uid://droec6ywygbxk" path="res://scenes/musikmon/Turbonker/img/Turbonker_256.png" id="2_2cpfk"]
+
+[node name="Page" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jeksy")
+
+[node name="Header" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 49.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Header"]
+layout_mode = 2
+text = "❤️‍🔥 MusikMon 🪗
+📒 MusikMon-Pedia 📒"
+horizontal_alignment = 1
+
+[node name="Content" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -266.5
+offset_bottom = 266.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="spacer" type="Control" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.01
+
+[node name="MusikmonView" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="mon_name" type="Label" parent="Content/MusikmonView"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+tooltip_text = "MusikMon Name"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+text = "Turbonker"
+
+[node name="mon_img" type="TextureRect" parent="Content/MusikmonView"]
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "MusikMon Bild"
+mouse_default_cursor_shape = 16
+texture = ExtResource("2_2cpfk")
+stretch_mode = 2
+
+[node name="mon_fusion" type="Label" parent="Content/MusikmonView"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+tooltip_text = "MusikMon Fusion"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+text = "Fusion:
+🐗 Wildschwein + Tuba"
+
+[node name="mon_typ" type="Label" parent="Content/MusikmonView"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+tooltip_text = "MusikMon Typen"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+text = "Typen
+🎧 Bass + 🎺 Lärm"
+
+[node name="mon_description" type="RichTextLabel" parent="Content/MusikmonView"]
+custom_minimum_size = Vector2(0, 85)
+layout_mode = 2
+mouse_filter = 1
+text = "Stampfendes Soundmonster mit einem tuba-artigen Rüssel, aus dem tiefste Töne wummern; schwer gepanzert. Kann alles auf seinem Weg wegpusten – inklusive befreundeter MusikMons"
+
+[node name="MusikmonNavigation" type="HBoxContainer" parent="Content/MusikmonView"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PrevMon" type="Button" parent="Content/MusikmonView/MusikmonNavigation"]
+layout_mode = 2
+tooltip_text = "Vorheriges MusikMon anzeigen"
+mouse_default_cursor_shape = 2
+text = "🔙"
+
+[node name="SelectMon" type="Button" parent="Content/MusikmonView/MusikmonNavigation"]
+layout_mode = 2
+tooltip_text = "MusikMon als Starter wählen"
+mouse_default_cursor_shape = 2
+text = "💾"
+
+[node name="NextMon" type="Button" parent="Content/MusikmonView/MusikmonNavigation"]
+layout_mode = 2
+tooltip_text = "Nächstes  MusikMon anzeigen"
+mouse_default_cursor_shape = 2
+text = "🔜"
+
+[node name="InventoryView" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="InventoryLabel" type="Label" parent="Content/InventoryView"]
+layout_mode = 2
+text = "Starter MusikMon"
+horizontal_alignment = 1
+
+[node name="spacer2" type="Control" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.01
+
+[node name="Footer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BottomNavigation" type="VBoxContainer" parent="Footer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MainMenu" type="Button" parent="Footer/BottomNavigation" groups=["main_ui_button"]]
+layout_mode = 2
+text = "📇 Hauptmenü"
+
+[node name="Play" type="Button" parent="Footer/BottomNavigation" groups=["main_ui_button"]]
+layout_mode = 2
+text = "🗺️ Adventure-Modus spielen"
+
+[connection signal="pressed" from="Content/MusikmonView/MusikmonNavigation/PrevMon" to="." method="_on_prev_mon_pressed"]
+[connection signal="pressed" from="Content/MusikmonView/MusikmonNavigation/SelectMon" to="." method="_on_select_mon_pressed"]
+[connection signal="pressed" from="Content/MusikmonView/MusikmonNavigation/NextMon" to="." method="_on_next_mon_pressed"]
+[connection signal="pressed" from="Footer/BottomNavigation/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Footer/BottomNavigation/Play" to="." method="_on_play_pressed"]

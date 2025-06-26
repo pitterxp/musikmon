@@ -3,7 +3,12 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	UiController.setup_ui_buttons_in_scene()
+	
+	PlayerService.load_profile()
+	if RuntimeParameter.player_id > 0:
+		var player_tag = preload("res://scenes/ui/templates/ui_player_profil_tag/ui_player_profil_tag.tscn").instantiate()
+		add_child(player_tag)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

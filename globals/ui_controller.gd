@@ -1,12 +1,12 @@
 extends Node
 
-# Namen definieren
-
+# Szenen-Navigation: Namen definieren
 # ### UI Scenes
 const INTRO = "intro"
 const MAIN_MENU = "main_menu"
 const OPTIONS_MENU = "options_menu"
 const MUSIKMON_PEDIA = "musikmon_pedia"
+const PLAYER_PROFILE = "player_profile"
 const PRE_ADVENTURE = "pre_adventure"
 const PRE_QWISIDLE = "pre_qwisidle"
 const CREDITS = "credits"
@@ -27,7 +27,8 @@ var ui_scenes = {
 	INTRO: preload("res://scenes/ui/intro/intro.tscn"),
 	MAIN_MENU: preload("res://scenes/ui/main_menu/main_menu.tscn"),
 	OPTIONS_MENU: preload("res://scenes/ui/options_menu/options_menu.tscn"),
-	MUSIKMON_PEDIA: preload("res://scenes/ui/musikmon_pedia/MusikMonDetailView.tscn"),
+	MUSIKMON_PEDIA: preload("res://scenes/ui/musikmon_pedia/musikmon_pedia.tscn"),
+	PLAYER_PROFILE: preload("res://scenes/ui/player_profile/player_profile.tscn"),
 	CREDITS: preload("res://scenes/ui/credits/credits.tscn"),
 	PRE_ADVENTURE: preload("res://scenes/ui/pre_adventure/pre_adventure.tscn"),
 	PRE_QWISIDLE: preload("res://scenes/ui/pre_qwisidle/pre_qwisidle.tscn")
@@ -43,6 +44,9 @@ var game_scenes = {
 	OVERWORLD_POI5: "res://scenes/game/world/overworld/POI/POI5/poi5.tscn",
 	OVERWORLD_POI6: "res://scenes/game/world/overworld/POI/POI6/poi6.tscn"
 }
+
+# UI Buttons
+const MAIN_UI_BUTTONS = "main_ui_button"
 
 func _ready() -> void:
 	pass
@@ -64,22 +68,19 @@ func goto_game_scene(scene_name:String) -> void:
 	else:
 		push_error("Game Szene nicht gefunden:" + scene_name)
 
-func goto_mainmenu() -> bool:
-	goto_ui_scene("main_menu")
-	return true
-
-# main_ui_button sound setup
+# main_ui_button sound + focus setup
 func setup_ui_buttons_in_scene():
 	await get_tree().process_frame
 	
 	# Alle Buttons in der "main_ui_button" Gruppe finden
-	var buttons = get_tree().get_nodes_in_group("main_ui_button")
+	var buttons = get_tree().get_nodes_in_group(MAIN_UI_BUTTONS)
 	
 	for button in buttons:
 		if button is Button:
-			
-			# Quick and dirty:
+			# Focus
 			button.grab_focus()
+			
+			# Sound
 			if not button.is_connected("pressed", _on_main_ui_button_pressed):
 				button.pressed.connect(_on_main_ui_button_pressed.bind(button))
 

@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://c30rnffagna2l"]
+
+[ext_resource type="Texture2D" uid="uid://dmxrmec7boi5m" path="res://scenes/musikmon/mon_placeholder/mon-placeholder_96.png" id="1_gnx2c"]
+[ext_resource type="Script" uid="uid://ddnw6v46d053l" path="res://scenes/ui/templates/ui_mon_inventory/ui_mon_inventory.gd" id="1_k3k1p"]
+
+[node name="InvSlot" type="HBoxContainer"]
+alignment = 1
+script = ExtResource("1_k3k1p")
+
+[node name="MonImgNickname" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="img" type="TextureRect" parent="MonImgNickname"]
+layout_mode = 2
+texture = ExtResource("1_gnx2c")
+stretch_mode = 3
+
+[node name="nickname" type="LineEdit" parent="MonImgNickname"]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+tooltip_text = "Benenne dein MusikMon"
+placeholder_text = "Benenne dein MusikMon"
+alignment = 1
+
+[node name="del" type="Button" parent="."]
+layout_mode = 2
+tooltip_text = "MusikMon entfernen"
+text = "🗑️"
+
+[connection signal="text_submitted" from="MonImgNickname/nickname" to="." method="_on_nickname_text_submitted"]
+[connection signal="pressed" from="del" to="." method="_on_del_pressed"]

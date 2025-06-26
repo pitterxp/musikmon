@@ -18,7 +18,7 @@ signal add_mon(mon_id:int)
 
 func _ready() -> void:
 	db = SQLite.new()
-	db.path = "res://database/musimon.db"
+	db.path = "res://database/musikmon.db"
 	db.open_db()
 	
 	#set_mon_id
@@ -29,7 +29,8 @@ func _ready() -> void:
 		_load_mon(current_mon_id)
 
 func _load_mon(mon_id:int) -> void:
-	var sql := """
+	"""
+	var sql := 
 	SELECT mm.id, mm.name, mm.beschreibung, mm.img_256,
 		   t1.name AS typ1_name,
 		   t1.icon AS typ1_icon,
@@ -45,6 +46,21 @@ func _load_mon(mon_id:int) -> void:
 	LEFT JOIN musikmon_rolle mr ON mm.id = mr.mon_id
 	LEFT JOIN rollen r ON mr.rolle_id = r.id
 	WHERE mm.id = %d;
+	"""
+	
+	var sql := """
+	SELECT mm.id, mm.name, mm.beschreibung, mm.img_256, mm.rolle,
+		   t1.name AS typ1_name,
+		   t1.icon AS typ1_icon,
+		   t1.beschreibung AS typ1_beschreibung,
+		   t2.name AS typ2_name,
+		   t2.icon AS typ2_icon,
+		   t2.beschreibung AS typ2_beschreibung
+	FROM musikmon mm
+	LEFT JOIN typen t1 ON mm.typ1_id = t1.id
+	LEFT JOIN typen t2 ON mm.typ2_id = t2.id
+	LEFT JOIN musikmon_rolle mr ON mm.id = mr.mon_id
+	WHERE mm.id = %d;
 	""" % mon_id
 	
 	db.query(sql)
@@ -55,14 +71,13 @@ func _load_mon(mon_id:int) -> void:
 		#var mm_id = row.get("id", "")
 		name_label.text = mon_name
 		typ_label.text = row.get("typ1_name", "") + ("/" + row.get("typ2_name") if row.get("typ2_name", "") != "" else "")
-		rollen_label.text = row.get("rollenname", "")
+		rollen_label.text = row.get("rolle", "")
 		beschreibung_label.text = mm_description
 		var tex_path : String = row.get("img_256", "")
 		if tex_path != "":
 			var tex = load(tex_path)
 			if tex:
 				img_texture.texture = tex
-
 
 func set_mon_id(mon_id:int) -> void:
 	current_mon_id = mon_id
