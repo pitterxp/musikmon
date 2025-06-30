@@ -5,6 +5,8 @@ var player_id : int = RuntimeParameter.player_id
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	UiController.setup_ui_buttons_in_scene()
+	
 	# here we always need a player_id
 	if player_id < 0:
 		player_id = PlayerService.check_playerid()

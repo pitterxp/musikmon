@@ -3,6 +3,8 @@ extends Node
 
 func load_profile() -> void:
 	var player_id = DB.load_player_profile()
+	if player_id <= 0:
+		player_id = check_playerid()
 	RuntimeParameter.player_id = player_id
 
 func check_playerid() -> int:
@@ -39,13 +41,17 @@ func show_nickname_popup():
 	
 	# Falls dein ui_input_nickname.tscn von Popup erbt
 
-func has_three_starter_mons() -> bool:
-	if RuntimeParameter.spieler_id == -1:
-		return false
-	#TODO
-	#var result = MusikMonDB.query("SELECT COUNT(*) FROM spieler_inventar_mon WHERE spieler_id = ? AND starter_mon = 1", [RuntimeParameter.spieler_id])
-	#return result[0]["COUNT(*)"] >= 3
-	return 0
+func has_three_starter_mons() -> int:
+	if RuntimeParameter.player_id <= 0:
+		load_profile()
+	
+	var player_startermon_count:int = DB.player_has_startermon(RuntimeParameter.player_id)
+	if player_startermon_count == 3:
+		# AllGood => 3 startermon were chosen
+		return 3
+	else:
+		# Player has to choose more startermon
+		return player_startermon_count
 	
 func is_valid_nickname(nickname: String) -> Array:
 	var trimmed_nickname = nickname.strip_edges()

@@ -60,6 +60,8 @@ func _delete_dialog_confirmed() -> void:
 
 
 func _on_details_pressed() -> void:
+	# TODO
+	# "normale Inventare" anzeigen: MusikMon und Items
 	pass
 
 func _on_del_pressed() -> void:

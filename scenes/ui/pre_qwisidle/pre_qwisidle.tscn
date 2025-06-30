@@ -2,30 +2,28 @@
 
 [ext_resource type="Script" uid="uid://cy8tm6st875oc" path="res://scenes/ui/pre_qwisidle/pre_qwisidle.gd" id="1_1pcjj"]
 
-[node name="PreQwisidle" type="CanvasLayer"]
-script = ExtResource("1_1pcjj")
-
-[node name="Page" type="Control" parent="."]
+[node name="Page" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1pcjj")
 
-[node name="Header" type="VBoxContainer" parent="Page"]
+[node name="Header" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
-[node name="Label" type="Label" parent="Page/Header"]
+[node name="Label" type="Label" parent="Header"]
 layout_mode = 2
 text = "❤️‍🔥 MusikMon 🪗
-♾️ QwisIdle Einstellungen ⚙️"
+♾️ QwisIdle Einstellungen ♾️"
 horizontal_alignment = 1
 
-[node name="Content" type="VBoxContainer" parent="Page"]
+[node name="Content" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -34,7 +32,12 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Footer" type="VBoxContainer" parent="Page"]
+[node name="Label" type="Label" parent="Content"]
+layout_mode = 2
+text = "“Wie Sie sehen, sehen Sie nichts.\""
+horizontal_alignment = 1
+
+[node name="Footer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -43,17 +46,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="ButtonSet" type="VBoxContainer" parent="Page/Footer"]
+[node name="ButtonSet" type="VBoxContainer" parent="Footer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Mainmenu" type="Button" parent="Page/Footer/ButtonSet" groups=["main_ui_button"]]
+[node name="Mainmenu" type="Button" parent="Footer/ButtonSet" groups=["main_ui_button"]]
 layout_mode = 2
 text = "📇 Hauptmenü"
 
-[node name="Play" type="Button" parent="Page/Footer/ButtonSet" groups=["main_ui_button"]]
+[node name="Play" type="Button" parent="Footer/ButtonSet" groups=["main_ui_button"]]
 layout_mode = 2
+disabled = true
 text = "♾️ Spielen"
 
-[connection signal="pressed" from="Page/Footer/ButtonSet/Mainmenu" to="." method="_on_mainmenu_pressed"]
-[connection signal="pressed" from="Page/Footer/ButtonSet/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Footer/ButtonSet/Mainmenu" to="." method="_on_mainmenu_pressed"]
+[connection signal="pressed" from="Footer/ButtonSet/Play" to="." method="_on_play_pressed"]

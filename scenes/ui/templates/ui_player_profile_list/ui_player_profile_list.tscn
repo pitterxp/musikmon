@@ -25,7 +25,8 @@ text = "💰 0000"
 
 [node name="details" type="Button" parent="."]
 layout_mode = 2
-tooltip_text = "Alle Details des Profils anzeigen"
+tooltip_text = "TODO
+Alle Details des Profils anzeigen"
 text = "🔎"
 
 [node name="EditStarterMon" type="Button" parent="."]

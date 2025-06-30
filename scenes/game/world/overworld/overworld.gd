@@ -19,3 +19,8 @@ func _process(_delta: float) -> void:
 func _player_global_spawn() -> void:
 	$Level/Spieler.global_position = $PlayerSpawnMarker/PlayerSpawnPosition.position
 	first_spawn = false
+
+
+func _input(event):
+	if event.is_action_pressed("user_pause_menu"):
+		PauseManager.pause_game("res://scenes/ui/pause_menu/pause_menu.tscn")

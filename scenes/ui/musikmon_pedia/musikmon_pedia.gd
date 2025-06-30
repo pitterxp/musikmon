@@ -4,14 +4,13 @@ var db : SQLite
 var current_mon_id : int = 1
 var mon_count : int
 
-var player_id : int = RuntimeParameter.player_id
+var player_id : int = -1
 var startermon_count = 0
 var startermon_max = 3
 var placeholder_thumbnail = "res://scenes/musikmon/mon_placeholder/mon-placeholder_96.png"
 var mon_list : Array
 
 const INV_TEMPLATE = "res://scenes/ui/templates/ui_mon_inventory/ui_mon_inventory.tscn"
-
 
 
 func _ready() -> void:
@@ -27,6 +26,8 @@ func _ready() -> void:
 		_display_mon(current_mon_id)
 	
 	# Check for userprofile & inventory
+	PlayerService.load_profile()
+	player_id = RuntimeParameter.player_id
 	if player_id > 0:
 		var player_tag = preload("res://scenes/ui/templates/ui_player_profil_tag/ui_player_profil_tag.tscn").instantiate()
 		add_child(player_tag)
@@ -34,6 +35,9 @@ func _ready() -> void:
 
 
 func _display_mon(mon_id:int) -> void:
+	print("Display current Mon Details")
+	print("Current Mon #", current_mon_id)
+	
 	# Fetch DB Data
 	var mon_data = 	DB.load_mon_details(mon_id)
 	var mon_name = mon_data['name']
@@ -59,7 +63,7 @@ func _fetch_mon_list() -> void:
 	
 	# Set "max" MusikMon count for "Display Details Navigation"
 	mon_count = mon_list.size()
-	
+
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("prev_musikmon"):
@@ -121,7 +125,7 @@ func _fetch_mon_inventory() -> void:
 			var inv_mon_id:int = key['mon_id']
 			var inv_mon_nickname:String = key['mon_nickname']
 			_set_inventory_gui(inv_mon_id, inv_mon_nickname, db_inv_id)
-			current_mon_id += 1
+
 
 func _prev_mon() -> void:
 	current_mon_id -= 1

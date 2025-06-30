@@ -1,9 +1,9 @@
-extends CanvasLayer
+extends Control
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	UiController.setup_ui_buttons_in_scene()
+	
+	$Footer/ButtonSet/Play.disabled = true
 	
 	PlayerService.load_profile()
 	if RuntimeParameter.player_id > 0:
@@ -13,19 +13,18 @@ func _ready() -> void:
 	load_musikmon_inventory()
 
 func load_musikmon_inventory() -> void:
-	var mon_inventory : Dictionary = RuntimeParameter.player_inventory_musikmon
-	if mon_inventory.size() > 0:
-		for key in mon_inventory:
-			#print(key , ": " + mon_inventory[key])
-			print(mon_inventory[key])
-			$Page/Content/Label.text = ""
+	var startermon_count := PlayerService.has_three_starter_mons()
+	if startermon_count == 3:
+		# (Starter) Mon Inventar anzeigen?
+		var msg = "🪗 GLHF ❤️‍🔥"
+		$Content/Label.text = msg
+		$Footer/ButtonSet/Play.disabled = false
 	else:
-		$Page/Content/Label.text = "🪗 Bitte 3 MusikMon zum Start wählen ❤️‍🔥"
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
+		var msg = "🪗 Bitte _3_ MusikMon zum Start wählen ❤️‍🔥"
+		$Content/Label.text = msg
+		$Footer/ButtonSet/Play.disabled = true
+		$Footer/ButtonSet/Play.tooltip_text = msg
+		$Footer/ButtonSet/Monpedia.show()
 
 func _on_mainmenu_pressed() -> void:
 	UiController.goto_ui_scene(UiController.MAIN_MENU)
@@ -33,3 +32,7 @@ func _on_mainmenu_pressed() -> void:
 
 func _on_play_pressed() -> void:
 	UiController.goto_game_scene(UiController.OVERWORLD)
+
+
+func _on_monpedia_pressed() -> void:
+	UiController.goto_ui_scene(UiController.MUSIKMON_PEDIA)

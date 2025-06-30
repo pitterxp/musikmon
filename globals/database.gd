@@ -22,6 +22,7 @@ func close_db() -> void:
 	db.close_db()
 	
 func load_mon_details(mon_id:int) -> Dictionary:
+	print("DB load_mon_details mon_id #", mon_id)
 	query = "
 	SELECT
 	m.name, m.fusion, m.beschreibung, m.img_256,
@@ -193,3 +194,18 @@ func get_player_nickname(player_id:int) -> String:
 		# Error
 		printerr(error)
 		return ""
+		
+		
+func player_has_startermon(player_id:int) -> int:
+	query = "SELECT COUNT(id) as mon_count FROM spieler_inventar_mon WHERE spieler_id = ? AND starter_mon = 1"
+	db.query_with_bindings(query, [player_id])
+	var error = db.error_message
+	
+	if error == "not an error":
+		# AllGood
+		var res = db.query_result
+		return res[0]['mon_count']
+	else:
+		# DB Error
+		printerr(error)
+		return 0

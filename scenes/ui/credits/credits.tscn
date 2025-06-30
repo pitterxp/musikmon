@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dy0663u5vp3dn" path="res://scenes/ui/credits/credits.gd" id="1_8bbg5"]
 
-[node name="Intro" type="CanvasLayer"]
+[node name="Credits" type="CanvasLayer"]
 script = ExtResource("1_8bbg5")
 
 [node name="Timer" type="Timer" parent="."]
