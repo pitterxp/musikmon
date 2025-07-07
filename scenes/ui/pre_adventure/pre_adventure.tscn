@@ -55,16 +55,16 @@ layout_mode = 2
 tooltip_text = "Hauptmenü"
 text = "📇 Hauptmenü"
 
-[node name="Play" type="Button" parent="Footer/ButtonSet" groups=["main_ui_button"]]
-layout_mode = 2
-text = "🗺️ Spielen"
-
 [node name="Monpedia" type="Button" parent="Footer/ButtonSet" groups=["main_ui_button"]]
 visible = false
 layout_mode = 2
 tooltip_text = "MusikMon-Pedia: Starter Mon wählen"
 text = "📒 MusikMon-Pedia"
 
+[node name="Play" type="Button" parent="Footer/ButtonSet" groups=["main_ui_button"]]
+layout_mode = 2
+text = "🗺️ Spielen"
+
 [connection signal="pressed" from="Footer/ButtonSet/Mainmenu" to="." method="_on_mainmenu_pressed"]
-[connection signal="pressed" from="Footer/ButtonSet/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Footer/ButtonSet/Monpedia" to="." method="_on_monpedia_pressed"]
+[connection signal="pressed" from="Footer/ButtonSet/Play" to="." method="_on_play_pressed"]

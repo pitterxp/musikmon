@@ -35,20 +35,23 @@ theme_override_constants/separation = 10
 
 [node name="NewProfile" type="HBoxContainer" parent="Content"]
 layout_mode = 2
+theme_override_constants/separation = 5
 alignment = 1
 
 [node name="newProfile" type="LineEdit" parent="Content/NewProfile"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+tooltip_text = "Neues Spielerprofil anlegen"
 placeholder_text = "Nickname für neues Profil..."
 
 [node name="addProfile" type="Button" parent="Content/NewProfile"]
 layout_mode = 2
-tooltip_text = "Profil mit diesem Nicknamen anlegen"
+tooltip_text = "Neues Spielerprofil anlegen"
 text = "💾"
 
 [node name="ProfileList" type="VBoxContainer" parent="Content"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Inventories" type="HBoxContainer" parent="Content"]
 layout_mode = 2

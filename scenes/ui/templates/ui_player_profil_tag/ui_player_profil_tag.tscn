@@ -7,7 +7,7 @@ z_index = -99
 y_sort_enabled = true
 offset_right = 58.0
 offset_bottom = 31.0
-text = "Profil: "
+text = "🧍 "
 flat = true
 script = ExtResource("1_5po6s")
 

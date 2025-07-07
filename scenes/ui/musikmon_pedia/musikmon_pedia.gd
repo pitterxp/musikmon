@@ -34,17 +34,14 @@ func _ready() -> void:
 		_fetch_mon_inventory()
 
 
-func _display_mon(mon_id:int) -> void:
-	print("Display current Mon Details")
-	print("Current Mon #", current_mon_id)
-	
+func _display_mon(mon_id:int) -> void:	
 	# Fetch DB Data
 	var mon_data = 	DB.load_mon_details(mon_id)
 	var mon_name = mon_data['name']
 	var mon_fusion = mon_data['fusion']
 	var mon_beschreibung = mon_data['beschreibung']
 	var mon_img = mon_data['img_256']
-	#TODO: "typ1_icon": "res://icons/laerm.png"
+	# TODO: "typ1_icon": "res://icons/laerm.png"
 	var typ1 = mon_data['typ1_symbol'] + " " +  mon_data['typ1_name']
 	var typ2 = mon_data['typ2_symbol'] + " " +  mon_data['typ2_name']
 	

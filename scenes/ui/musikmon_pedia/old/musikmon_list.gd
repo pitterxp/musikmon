@@ -66,7 +66,6 @@ func _handle_inventory(index: int, mode = "add") -> void:
 		# Zu viele Musikmon?
 		if mon_inventory_count < mon_inventory_count_max:
 			# Identische Musikmon?
-			#TODO mon_inventory_list raus, mon_inventory rein
 			if not mon_inventory_list.has(mon_id):
 				# Inventory für RuntimeData speichern
 				mon_inventory_list[mon_id] = {"name": mon_name, "id": mon_id}

@@ -23,4 +23,7 @@ func _process(_delta: float) -> void:
 		#teleport_player($"../../PlayerSpawnMarker/PortalPosition".position)
 		
 func teleport_player(new_position: Vector2) -> void:
-	$"../../Level/Spieler".global_position = new_position
+	var game = get_node("/root/Game")
+	var player = game.get_player()
+	
+	player.global_position = new_position

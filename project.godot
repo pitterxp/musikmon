@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MusikMon"
-run/main_scene="uid://dncqh7sna8ekv"
+run/main_scene="uid://clp6wcsilarnp"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0.854902, 0.647059, 0.12549, 1)
 boot_splash/show_image=false

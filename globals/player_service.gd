@@ -67,3 +67,13 @@ func is_valid_nickname(nickname: String) -> Array:
 		return [false, "Der Nickname muss zwischen 3 und 32 Zeichen lang sein." ]
 
 	return [true, trimmed_nickname]
+	
+
+# Hilfsfunktion, solange img file paths in der DB noch nicht finalisiert sind
+func img_path(img_name:String, img_size:int) -> String:
+	var ico = "res://scenes/humans/various/"+img_name+"/img/"+img_name+"_%d.png" % img_size
+	return ico
+
+# # #
+# INGAME 
+# # #

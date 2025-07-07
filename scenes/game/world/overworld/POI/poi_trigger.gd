@@ -22,7 +22,9 @@ func _process(_delta: float) -> void:
 		call_deferred("_switch_scene")
 
 func _switch_scene():
-	var player_pos = $"../../Level/Spieler".global_position
+	var game = get_node("/root/Game")
+	var player = game.get_player()
+	var player_pos = player.global_position
 	#print(player_pos)
-	RuntimeParameter.overworldmap_last_player_position = player_pos	
+	RuntimeParameter.overworldmap_last_player_position = player_pos
 	UiController.goto_game_scene(target_scene)

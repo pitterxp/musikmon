@@ -31,7 +31,7 @@ func _on_mainmenu_pressed() -> void:
 
 
 func _on_play_pressed() -> void:
-	UiController.goto_game_scene(UiController.OVERWORLD)
+	UiController.goto_game_scene(UiController.GAME)
 
 
 func _on_monpedia_pressed() -> void:

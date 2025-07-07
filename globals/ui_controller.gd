@@ -36,6 +36,7 @@ var ui_scenes = {
 
 # Pfade definieren ohne vorzuladen
 var game_scenes = {
+	GAME: "res://scenes/game/game.tscn",
 	OVERWORLD: "res://scenes/game/world/overworld/overworld.tscn",
 	OVERWORLD_POI1: "res://scenes/game/world/overworld/POI/POI1/poi1.tscn",
 	OVERWORLD_POI2: "res://scenes/game/world/overworld/POI/POI2/poi2.tscn",

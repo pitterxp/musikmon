@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw6mnghd65px2"]
+
+[ext_resource type="Script" uid="uid://du5qqmgwfqe7n" path="res://scenes/ui/templates/ui_player_profile_avatar/ui_player_profile_avatar.gd" id="1_jjo48"]
+
+[node name="AvatarList" type="ItemList"]
+custom_minimum_size = Vector2(256, 280)
+offset_right = 199.0
+offset_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+auto_width = true
+max_columns = 3
+same_column_width = true
+fixed_column_width = 96
+icon_mode = 0
+fixed_icon_size = Vector2i(0, 128)
+script = ExtResource("1_jjo48")
+
+[connection signal="item_activated" from="." to="." method="_on_item_activated"]

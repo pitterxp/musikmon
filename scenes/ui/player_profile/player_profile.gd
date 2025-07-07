@@ -1,9 +1,9 @@
 extends Control
 
 const PROFILE_TEMPLATE = "res://scenes/ui/templates/ui_player_profile_list/ui_player_profile_list.tscn"
+
 var player_id : int = RuntimeParameter.player_id
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	UiController.setup_ui_buttons_in_scene()
 	
@@ -15,7 +15,7 @@ func _ready() -> void:
 
 
 func _setup_profile_list() -> void:	
-	var profiles: Array = DB.load_player_profiles()	
+	var profiles: Array = DB.load_player_profiles()
 	
 	if profiles[0]:
 		profiles = profiles[1]
@@ -26,6 +26,8 @@ func _setup_profile_list() -> void:
 		var xp:int = key['xp']
 		var currency:int = key['currency']
 		var active:bool = key['last_active']
+		var desc:String = key['beschreibung']
+		var img:String = PlayerService.img_path(desc, 64)
 		
 		# Template laden
 		var template = preload(PROFILE_TEMPLATE).instantiate()
@@ -34,7 +36,7 @@ func _setup_profile_list() -> void:
 		$Content/ProfileList.add_child(template)
 		
 		# Daten übergeben
-		template.setup_profile_entry(profile_id, nickname, xp, currency, active)
+		template.setup_profile_entry(profile_id, nickname, xp, currency, img, active)
 		
 
 func setup_mon_inventory(_profile_id:int) -> void:

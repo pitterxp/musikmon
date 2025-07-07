@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcbjrvwwf06gb"]
+[gd_scene load_steps=3 format=3 uid="uid://dcbjrvwwf06gb"]
 
 [ext_resource type="Script" uid="uid://ce0fihk5by6wu" path="res://scenes/ui/options_menu/options_menu.gd" id="1_7iv5r"]
+[ext_resource type="PackedScene" uid="uid://dh513pjaulssn" path="res://scenes/ui/templates/ui_volume_slider/ui_volume_slider.tscn" id="2_r4unu"]
 
 [node name="Page" type="Control"]
 layout_mode = 3
@@ -31,6 +32,12 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="audio" type="HBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="volumeSider" parent="Content/audio" instance=ExtResource("2_r4unu")]
+layout_mode = 2
 
 [node name="Footer" type="VBoxContainer" parent="."]
 layout_mode = 1

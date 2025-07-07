@@ -4,8 +4,8 @@ var bgm_volume: float = GameParameter.bgmVolume
 var sfx_volume: float = GameParameter.sfxVolume
 var init_slider = true
 
-@onready var bgm_slider = $HBoxContainer/bgm/bgmVolume
-@onready var sfx_slider = $HBoxContainer/sfx/sfxSlider
+@onready var bgm_slider = $bgm/bgmVolume
+@onready var sfx_slider = $sfx/sfxSlider
 
 func _ready() -> void:	
 	_init_slider()

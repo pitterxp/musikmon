@@ -22,7 +22,6 @@ func close_db() -> void:
 	db.close_db()
 	
 func load_mon_details(mon_id:int) -> Dictionary:
-	print("DB load_mon_details mon_id #", mon_id)
 	query = "
 	SELECT
 	m.name, m.fusion, m.beschreibung, m.img_256,
@@ -101,7 +100,7 @@ func new_player_profile(nickname:String) -> int:
 	query = "UPDATE spieler SET last_active = 0"
 	db.query(query)
 	
-	query = "INSERT INTO spieler (id, nickname, last_active) VALUES (NULL,?,1)"
+	query = "INSERT INTO spieler (id, nickname, charakter_id, last_active) VALUES (NULL,?,84,1)"
 	db.query_with_bindings(query, [nickname])
 	var error = db.error_message
 	if error != "not an error":
@@ -131,8 +130,8 @@ func load_player_profile(player_id:int=-1) -> int:
 		player_id = res[0]
 	return player_id
 
-func load_player_profiles() -> Array:
-	query = "SELECT * FROM spieler ORDER BY last_active DESC"
+func load_player_profiles() -> Array:	
+	query = "SELECT t1.*, t2.beschreibung FROM spieler AS t1 LEFT JOIN charaktere_avatare AS t2 ON t1.charakter_id = t2.id ORDER BY t1.last_active DESC;"
 	db.query(query)
 	
 	var error = db.error_message
@@ -182,25 +181,24 @@ func set_player_nickname(player_id:int, nickname:String) -> bool:
 		# Error
 		return false
 		
-func get_player_nickname(player_id:int) -> String:
-	query = "SELECT nickname FROM spieler WHERE id = ?"
+func load_player_tag(player_id:int) -> Array:
+	query = "SELECT t1.nickname, t2.beschreibung FROM spieler AS t1 LEFT JOIN charaktere_avatare AS t2 ON t1.charakter_id = t2.id WHERE  t1.id = ?"
 	db.query_with_bindings(query, [player_id])
 	var error = db.error_message
 	if error == "not an error":
 		# AllGood
 		var res = db.query_result
-		return res[0]['nickname']
+		return [true, res[0]]
 	else:
 		# Error
 		printerr(error)
-		return ""
+		return [false, error]
 		
 		
 func player_has_startermon(player_id:int) -> int:
 	query = "SELECT COUNT(id) as mon_count FROM spieler_inventar_mon WHERE spieler_id = ? AND starter_mon = 1"
 	db.query_with_bindings(query, [player_id])
 	var error = db.error_message
-	
 	if error == "not an error":
 		# AllGood
 		var res = db.query_result
@@ -209,3 +207,54 @@ func player_has_startermon(player_id:int) -> int:
 		# DB Error
 		printerr(error)
 		return 0
+
+func load_avatar_list() -> Array:
+	query = "SELECT id, beschreibung FROM charaktere_avatare WHERE tags != 'musikmon' AND tags != 'npc';"
+	db.query(query)	
+	var error = db.error_message	
+	if error == "not an error":
+		# AllGood
+		var res = db.query_result
+		return [true, res]
+	else:
+		# DB Error
+		printerr(error)
+		return [false, error]
+
+func save_player_avatar(player_id:int, avatar_id:int) -> Array:
+	query = "UPDATE spieler SET charakter_id = ? WHERE id = ?"
+	db.query_with_bindings(query, [avatar_id, player_id])
+	var error = db.error_message
+	if error == "not an error":
+		# AllGood
+		return [true]
+	else:
+		# DB Error
+		printerr(error)
+		return [false, error]
+		
+func load_player_runtime_data(player_id:int) -> Array:
+	query = "SELECT t1.*, t2.beschreibung AS charakter_avatar FROM spieler AS t1 LEFT JOIN charaktere_avatare AS t2 ON t1.charakter_id = t2.id WHERE t1.id = ?"
+	db.query_with_bindings(query, [player_id])
+	var error = db.error_message
+	if error == "not an error":
+		# AllGood
+		var res = db.query_result
+		return [true, res]
+	else:
+		# DB Error
+		printerr(error)
+		return [false, error]
+
+# TODO
+# Player Position SYNCH
+func save_player_position(player_id:int, pos:String) -> void:
+	query = "UPDATE spieler SET last_position = ? WHERE id = ?"
+	db.query_with_bindings(query, [pos, player_id])
+	var error = db.error_message
+	if error == "not an error":
+		# AllGood
+		print("OK - good to leave/exit/whatever")
+	else:
+		# DB Error
+		printerr(error)
