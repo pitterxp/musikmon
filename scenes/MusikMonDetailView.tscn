@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/MusikMonDetailView.gd" id="1"]
+
+[node name="MusikMonDetailView" type="VBoxContainer"]
+script = ExtResource("1")
+
+[node name="name_label" type="Label" parent="."]
+
+[node name="img_texture" type="TextureRect" parent="."]
+
+[node name="typ_label" type="Label" parent="."]
+
+[node name="rollen_label" type="Label" parent="."]
+
+[node name="beschreibung_label" type="RichTextLabel" parent="."]
+
+[node name="ButtonContainer" type="HBoxContainer" parent="."]
+
+[node name="zurueck_button" type="Button" parent="ButtonContainer"]
+text = "Zurück"
+
+[node name="weiter_button" type="Button" parent="ButtonContainer"]
+text = "Weiter"
+
+[connection signal="pressed" from="ButtonContainer/zurueck_button" to="." method="_on_zurueck_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/weiter_button" to="." method="_on_weiter_button_pressed"]
